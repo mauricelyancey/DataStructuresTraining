@@ -21,8 +21,26 @@ public class SimpleHashTable {
         else hashTable[hashedKey] = new StoredEmployee(key, employee);
     }
 
-    public StoredEmployee get(String key){
-        return hashTable[findKey(key)];
+    public Employee get(String key){
+        int hashedKey = findKey(key);
+        if(hashedKey == -1) return null;
+        return hashTable[hashedKey].employee;
+    }
+
+    public Employee remove(String key){
+        int hashedKey = findKey(key);
+        if(hashedKey == -1) return null;
+        Employee employee = hashTable[hashedKey].employee;
+        hashTable[hashedKey] = null;
+
+        StoredEmployee[] oldHashTable = hashTable;
+        hashTable = new StoredEmployee[oldHashTable.length];
+        for(int i = 0; i < oldHashTable.length; i++){
+            if(oldHashTable[i] != null){
+                put(oldHashTable[i].key, oldHashTable[i].employee);
+            }
+        }
+        return employee;
     }
 
     private int hashKey(String key){
@@ -31,7 +49,8 @@ public class SimpleHashTable {
 
     public void printHashTable(){
         for( int i = 0; i < hashTable.length; i++){
-            System.out.println(hashTable[i]);
+            if(hashTable[i] == null) System.out.println("empty");
+            else System.out.println("position " + i +": " +hashTable[i].employee);
         }
     }
 
@@ -51,8 +70,11 @@ public class SimpleHashTable {
                 !hashTable[hashedKey].key.equals(key)) {
             hashedKey = (hashedKey + 1) % hashTable.length;
         }
-        if(stopIndex == hashedKey) return -1;
-        else return hashedKey;
+        if(hashTable[hashedKey] != null &&
+        hashTable[hashedKey].key.equals(key)){
+            return  hashedKey;
+        }
+        else return -1;
 
     }
 }
