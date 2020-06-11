@@ -8,7 +8,8 @@ public class Main {
         Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
         Employee billEnd = new Employee("Bill", "End", 78);
 
-        SimpleHashTable ht = new SimpleHashTable();
+//        SimpleHashTable ht = new SimpleHashTable();
+        ChainedHashTable ht = new ChainedHashTable();
         ht.put("Jones", janeJones);
         ht.put("Doe", johnDoe);
         ht.put("Wilson", mikeWilson);
@@ -18,10 +19,9 @@ public class Main {
         System.out.println("Retrieve key Wilson :"+ ht.get("Wilson"));
         System.out.println("Retrieve key Smith :"+ ht.get("Smith"));
 
-        ht.remove("Wilson");
+        ht.remove("Doe");
         ht.remove("Jones");
 
-        ht.printHashTable();
         System.out.println("Retrieve key Smith :"+ ht.get("Smith"));
 
     }
