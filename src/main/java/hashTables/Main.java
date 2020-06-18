@@ -18,10 +18,10 @@ public class Main {
         hashMap.put("End", billEnd);
 //        Employee employee = hashMap.put("Doe", mikeWilson);
         Employee employee= hashMap.putIfAbsent("Doe", mikeWilson);
-        System.out.println(employee);
-
-        System.out.println(hashMap.getOrDefault("someone", mikeWilson));
-        System.out.println(hashMap.remove("Jones"));
+//        System.out.println(employee);
+//
+//        System.out.println(hashMap.getOrDefault("someone", mikeWilson));
+//        System.out.println(hashMap.remove("Jones"));
 
 //        Iterator<Employee> iterator = hashMap.values().iterator();
 //        while(iterator.hasNext()){
@@ -31,7 +31,7 @@ public class Main {
 //        System.out.println(hashMap.containsKey("Doe"));
 //        System.out.println(hashMap.containsValue(janeJones));
 
-        hashMap.forEach((k,v) -> System.out.println("Key = " + k+" , Employee = "+v));
+//        hashMap.forEach((k,v) -> System.out.println("Key = " + k+" , Employee = "+v));
 
 //        SimpleHashTable ht = new SimpleHashTable();
 //        ChainedHashTable ht = new ChainedHashTable();
@@ -49,43 +49,64 @@ public class Main {
 //
 //        System.out.println("Retrieve key Smith :"+ ht.get("Smith"));
 
-        int[] intArray = {54, 46, 83, 66, 95, 92, 43};
+//        int[] intArray = {54, 46, 83, 66, 95, 92, 43};
+//
+//        bucketSort(intArray);
+//
+//        for(int i =0; i < intArray.length; i++){
+//            System.out.println(intArray[i]);
+//        }
 
-        bucketSort(intArray);
 
-        for(int i =0; i < intArray.length; i++){
-            System.out.println(intArray[i]);
+
+        /** The following is for the Hashtable Challenge 1
+         * */
+
+        int[] nums = new int[10];
+        int[] numsToAdd = {59382, 43, 6894, 500, 99, -58};
+        for(int i =0; i < numsToAdd.length; i++){
+            nums[hash(numsToAdd[i])] =numsToAdd[i];
+        }
+        for(int i =0; i<nums.length; i++){
+            System.out.println(nums[i]);
         }
     }
 
-    private static void bucketSort(int[] input) {
-        List<Integer>[] buckets = new List[10];
-
-        for( int i =0; i < buckets.length; i++){
-            //using LinkedList for the buckets
+//    private static void bucketSort(int[] input) {
+//        List<Integer>[] buckets = new List[10];
+//
+//        for( int i =0; i < buckets.length; i++){
+//            //using LinkedList for the buckets
+////            buckets[i] = new LinkedList<Integer>();
+//
+//            //using ArrayList for the buckets
 //            buckets[i] = new LinkedList<Integer>();
+//        }
+//
+//        for(int i=0; i<input.length; i++){
+//            buckets[hash(input[i])].add(input[i]);
+//        }
+//
+//        for(List bucket: buckets){
+//            Collections.sort(bucket);
+//        }
+//
+//        int j =0;
+//        for (int i=0; i < buckets.length; i++){
+//            for( int value: buckets[i]){
+//                input[j++] = value;
+//            }
+//        }
+//    }
 
-            //using ArrayList for the buckets
-            buckets[i] = new LinkedList<Integer>();
-        }
+    //hash function for bucketsort implementation
+//    private static int hash(int value){
+//        return value/ (int) 10 ;
+//    }
 
-        for(int i=0; i<input.length; i++){
-            buckets[hash(input[i])].add(input[i]);
-        }
-
-        for(List bucket: buckets){
-            Collections.sort(bucket);
-        }
-
-        int j =0;
-        for (int i=0; i < buckets.length; i++){
-            for( int value: buckets[i]){
-                input[j++] = value;
-            }
-        }
-    }
-
-    private static int hash(int value){
-        return value/ (int) 10 ;
+    /** Hash function for HashTable Challenge 1
+     * */
+    private static int hash(int number){
+        return Math.abs(number % 10);
     }
 }
