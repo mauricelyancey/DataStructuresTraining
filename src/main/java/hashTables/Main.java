@@ -1,13 +1,16 @@
 package hashTables;
 
+import sun.awt.image.ImageWatched;
+
+import javax.naming.LinkLoopException;
 import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
         Employee janeJones = new Employee("Jane", "Jones", 123);
-        Employee johnDoe = new Employee("John", "Doe", 4567);
-        Employee marySmith = new Employee("Mary", "Smith", 22);
-        Employee mikeWilson = new Employee("Mike", "Wilson", 3245);
+        Employee johnDoe = new Employee("John", "Doe", 5678);
+        Employee marySmith = new Employee("Mary", "Smith", 5555);
+        Employee mikeWilson = new Employee("Mike", "Wilson", 45);
         Employee billEnd = new Employee("Bill", "End", 78);
 
         Map<String, Employee> hashMap = new HashMap<String, Employee>();
@@ -70,6 +73,40 @@ public class Main {
         for(int i =0; i<nums.length; i++){
             System.out.println(nums[i]);
         }
+
+        /**The following is for the Hashtable Challenge 2
+         * 
+         */
+
+        LinkedList<Employee> employees = new LinkedList<>();
+        employees.add(new Employee("Jane","Jones", 123));
+        employees.add(new Employee("Jone","Doe", 5678));
+        employees.add(new Employee("Mike","Wilson", 45));
+        employees.add(new Employee("Mary","Smith", 5555));
+        employees.add(new Employee("John","Doe", 5678));
+        employees.add(new Employee("Bill","End", 3948));
+        employees.add(new Employee("Jane","Jones", 123));
+
+        employees.forEach(e -> System.out.println(e));
+
+        HashMap<Integer, Employee> employeeTable = new HashMap<>();
+        ListIterator<Employee> iterator = employees.listIterator();
+        List<Employee> remove = new ArrayList<>();
+
+        while(iterator.hasNext()){
+            Employee employee1 = iterator.next();
+            if(employeeTable.containsKey(employee1.getId())){
+                remove.add(employee1);
+            }
+            else employeeTable.put(employee1.getId(), employee1);
+        }
+
+        for(Employee e: remove){
+            employees.remove(e);
+        }
+
+        System.out.println("--------------");
+        employees.forEach(e -> System.out.println(e));
     }
 
 //    private static void bucketSort(int[] input) {
