@@ -1,9 +1,6 @@
 package sort;
 
-public class BubbleSort {
-
-    private int[] unsortedArray;
-
+public class BubbleSort extends Sort {
     public BubbleSort() {
     }
 
@@ -17,15 +14,6 @@ public class BubbleSort {
                 if(unsortedArray[i] > unsortedArray[i +1]) swap(unsortedArray, i, i+1);
             }
         }
-        for (int i : unsortedArray) {
-            System.out.println(i);
-        }
+        printSortedArray(unsortedArray);
     }
-
-    private void swap(int[] array, int i, int j){
-        if(i == j) return;
-        int temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-        }
 }
