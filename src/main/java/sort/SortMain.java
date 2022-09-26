@@ -12,7 +12,13 @@ public class SortMain {
         Sort insertionSort = new InsertionSort(unsortedArray);
 //        insertionSort.sort();
 
-        ShellSort shellSort = new ShellSort(new int[] {-3,17,1});
-        shellSort.sort();
-    }
+        ShellSort shellSort = new ShellSort(unsortedArray);
+//        shellSort.sort();
+
+//        Sort mergeSort = new MergeSort(unsortedArray);
+//        mergeSort.sort();
+
+        Sort quickSort = new QuickSort(unsortedArray);
+        quickSort.sort();
+   }
 }
