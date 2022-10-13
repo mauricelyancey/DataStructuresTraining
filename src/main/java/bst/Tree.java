@@ -29,8 +29,8 @@ public class Tree {
 
     private Node delete(Node subTreeRoot, int value){
         if(subTreeRoot == null) return subTreeRoot;
-        if(value < subTreeRoot.getData()) delete(subTreeRoot.getLeftChild(), value);
-        if (value > subTreeRoot.getData()) delete(subTreeRoot.getRightChild(), value);
+        if(value < subTreeRoot.getData()) subTreeRoot.setLeftChild(delete(subTreeRoot.getLeftChild(), value));
+        if (value > subTreeRoot.getData()) subTreeRoot.setRightChild(delete(subTreeRoot.getRightChild(), value));
         else{
             //Case where node to delete has 0 or 1 children
             if(subTreeRoot.getLeftChild() == null) return subTreeRoot.getRightChild();

@@ -24,7 +24,7 @@ public class TreeMain {
         testTree.delete(10);
         testTree.traverseInOrder();
         System.out.println();
-        testTree.delete(17);
+        testTree.delete(27);
         testTree.traverseInOrder();
         System.out.println();
 
